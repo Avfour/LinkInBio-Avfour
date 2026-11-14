@@ -90,7 +90,7 @@ const I18N = {
     themeAria: "Switch theme",
     langAria: "Switch language to Indonesian",
     premiumNote: "Starting from 5.000 IDR. Plenty of other apps available if you need them.",
-    order: (n) => `Yo, Avfour!\nI want to order (${n}).`,
+    order: n => `Yo, Avfour!\nI want to order ${n}.`,
     askOthers: "Yo, Avfour!\nI want to ask about other apps."
   }
 };
