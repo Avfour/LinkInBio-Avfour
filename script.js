@@ -73,7 +73,7 @@ const I18N = {
     themeAria: "Ganti tema",
     langAria: "Ganti bahasa ke English",
     premiumNote: "Mulai dari 5.000 IDR, masih banyak aplikasi lain yang mungkin kamu butuhkan.",
-    order: (n) => `Yo, Avfour!\nMau order ${n} dong.`,
+    order: n => `Yo, Avfour!\nMau order ${n} dong.`,
     askOthers: "Yo, Avfour!\nMau tanya apps lain dong."
   },
   en: {
