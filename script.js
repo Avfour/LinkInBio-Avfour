@@ -44,14 +44,14 @@ const PRODUCTS = [
   {
     name: "Sweet Macaroon",
     desc: { id: "Deskripsi singkat produk", en: "Short product description" },  // GANTI: deskripsi produk
-    price: "Rp0",                                                               // GANTI: harga produk
+    price: "Rp 19.000",                                                               // GANTI: harga produk
     image: "assets/products/sweet-macaroon.webp",                               // GANTI: kalau nama file beda
     link: "http://lynk.id/aiiistheticsv4/1ogp5z13pz81/checkout"
   },
   {
     name: "Liquid Refraction",
     desc: { id: "Deskripsi singkat produk", en: "Short product description" },  // GANTI: deskripsi produk
-    price: "Rp0",                                                               // GANTI: harga produk
+    price: "Rp 45.000",                                                               // GANTI: harga produk
     image: "assets/products/liquid-refraction.webp",                            // GANTI: kalau nama file beda
     link: "http://lynk.id/aiiistheticsv4/oproeemmqjr8/checkout"
   }
@@ -73,7 +73,7 @@ const I18N = {
     themeAria: "Ganti tema",
     langAria: "Ganti bahasa ke English",
     premiumNote: "Mulai dari 5.000 IDR, masih banyak aplikasi lain yang mungkin kamu butuhkan.",
-    order: (n) => `Yo, Avfour!\nMau order (${n}) dong.`,
+    order: (n) => `Yo, Avfour!\nMau order ${n} dong.`,
     askOthers: "Yo, Avfour!\nMau tanya apps lain dong."
   },
   en: {
