@@ -1,0 +1,314 @@
+/* ===== WARNA (semua lewat variabel) ===== */
+:root {
+  --pink: #f98fb0;        /* border / teks pink soft */
+  --pink-bg: #fde4ea;     /* background pink soft */
+  --bg: #ffffff;          /* putih */
+  --bg-2: #f8f8f8;        /* krem / abu terang */
+  --text: #1b1b1b;
+  --muted: #8a8a8a;
+  --line: #cfcfcf;
+  --ink: #111111;         /* warna ikon & garis footer */
+  --pill-end: var(--pink-bg);
+  --footer-end: color-mix(in srgb, var(--pink) 28%, var(--bg));
+  --scrim: rgba(255, 255, 255, 0.25);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  color-scheme: light;
+}
+
+/* Dark: putih -> hitam, krem -> abu gelap, pink soft tetap sama */
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --bg-2: #1c1c1e;
+  --text: #f2f2f2;
+  --muted: #9a9a9a;
+  --line: #333333;
+  --ink: #f2f2f2;
+  /* pink dicampur sedikit ke gelap supaya teks pink tetap terbaca */
+  --pill-end: color-mix(in srgb, var(--pink) 22%, var(--bg));
+  --scrim: rgba(0, 0, 0, 0.35);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+  color-scheme: dark;
+}
+
+/* ===== DASAR ===== */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { scrollbar-gutter: stable; }
+html.locked, html.locked body { overflow: hidden; }
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: var(--bg-2);
+  color: var(--text);
+  font-family: "EB Garamond", "Cormorant Garamond", Georgia, serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img { max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+
+/* ===== KARTU UTAMA ===== */
+.card {
+  max-width: 480px;
+  min-height: calc(100dvh - 32px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease both;  /* background fade in */
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== HEADER ===== */
+.hero { position: relative; height: 210px; }
+.banner { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, var(--bg) 100%);
+}
+
+.chip {
+  position: absolute; top: 14px; z-index: 2;
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  border: 1.5px solid var(--pink);
+  border-radius: 999px;
+  letter-spacing: 0.16em;
+  font-size: 0.95rem;
+}
+.chip svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.chip-left { left: 14px; }
+.chip-right { right: 14px; }
+
+.avatar {
+  position: absolute; left: 50%; bottom: -92px; z-index: 1;
+  width: 190px; height: 190px;
+  margin-left: -95px;
+  border-radius: 50%;
+  object-fit: cover;
+  outline: 1.5px solid var(--pink);
+  outline-offset: 6px;
+}
+
+/* ===== TEKS NAMA ===== */
+.intro { margin-top: 112px; text-align: center; padding: 0 16px; }
+.intro h1 {
+  margin: 0; padding-left: 0.4em;
+  font-weight: 500; font-size: 2.1rem; letter-spacing: 0.4em;
+}
+.role { margin: 2px 0 0; padding-left: 0.2em; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.2em; }
+.tagline {
+  margin: 14px 0 0; padding-left: 0.25em;
+  color: var(--pink); font-style: italic; font-size: 0.95rem; letter-spacing: 0.22em;
+}
+
+/* ===== TOMBOL ===== */
+.menu { display: flex; flex-direction: column; gap: 14px; padding: 24px 20px 0; }
+
+.big, .pill {
+  display: flex; width: 100%;
+  border: 1.5px solid var(--pink);
+  text-align: left; text-decoration: none;
+}
+
+/* Products (besar) */
+.big {
+  position: relative; padding: 8px;
+  background: var(--bg-2);
+  border-radius: 32px;
+}
+.big img {
+  display: block; width: 100%; aspect-ratio: 16 / 6; object-fit: cover;
+  border-radius: 24px;
+}
+.big::after { /* gradient bawah supaya teks terbaca */
+  content: ""; position: absolute; left: 8px; right: 8px; bottom: 8px; height: 55%;
+  border-radius: 0 0 24px 24px; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+}
+.big-label {
+  position: absolute; left: 0; right: 0; bottom: 18px; z-index: 1;
+  text-align: center; color: var(--pink);
+  font-style: italic; font-size: 1.3rem; letter-spacing: 0.3em;
+}
+
+/* Pill (Projects, Portofolio, Services, Premium Apps, Testimonials) */
+.pill {
+  align-items: center; gap: 22px;
+  padding: 8px;
+  background: linear-gradient(90deg, var(--bg), var(--pill-end));
+  border-radius: 25px;
+}
+.thumb { flex: none; width: 56px; height: 56px; border-radius: 16px; object-fit: cover; }
+.label { color: var(--pink); font-style: italic; font-size: 1.2rem; letter-spacing: 0.28em; }
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: auto;
+  padding: 90px 16px 20px;
+  background: linear-gradient(to bottom, transparent, var(--footer-end));
+}
+.socials { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.icon-btn {
+  display: grid; place-items: center;
+  width: 46px; height: 46px; padding: 0;
+  background: none; border: 0; color: var(--ink);
+}
+.icon-btn svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 0.9; stroke-linecap: round; stroke-linejoin: round; }
+.icon-wa { width: 70px; height: 70px; }
+.icon-wa svg { width: 52px; height: 52px; }
+
+.signature { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 8px; color: var(--ink); }
+.signature span { width: 54px; height: 1px; background: currentColor; }
+.signature p { margin: 0; padding-left: 0.3em; font-size: 1.25rem; letter-spacing: 0.3em; }
+
+/* ===== ANIMASI MASUK ===== */
+.reveal {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ===== POPUP BESAR ===== */
+.overlay {
+  position: fixed; inset: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  overscroll-behavior: contain;
+}
+.backdrop {
+  position: absolute; inset: 0;
+  background: transparent;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  transition: backdrop-filter 0.45s ease, -webkit-backdrop-filter 0.45s ease, background 0.45s ease;
+}
+.overlay.open .backdrop {
+  background: var(--scrim);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.popup {
+  position: relative;
+  width: 100%; max-width: 440px;
+  max-height: calc(100dvh - 32px);
+  display: flex; flex-direction: column;
+  background: linear-gradient(var(--bg-2) 50%, var(--pill-end));
+  border: 1.5px solid var(--pink);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  will-change: transform;
+}
+.popup-inner {
+  display: flex; flex-direction: column; min-height: 0;
+  opacity: 0; transition: opacity 0.25s ease 0.12s;
+}
+.overlay.open .popup-inner { opacity: 1; }
+.overlay.closing .popup-inner { opacity: 0; transition: opacity 0.15s ease; }
+
+.popup-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 14px 6px 28px; }
+.popup-title { margin: 0; font-weight: 500; font-style: italic; font-size: 1.45rem; letter-spacing: 0.3em; }
+.popup-close { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; background: none; border: 0; color: var(--pink); }
+.popup-close svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
+.popup-note { margin: 0; padding: 0 28px 8px; font-size: 0.98rem; line-height: 1.25; color: var(--muted); }
+.popup-body { display: flex; flex-direction: column; gap: 14px; padding: 10px 16px 18px; overflow-y: auto; }
+
+/* Kartu Services / Premium Apps */
+.item {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 18px 22px;
+  background: var(--bg);
+  border: 1.5px solid var(--pink);
+  border-radius: 28px;
+  text-decoration: none; color: var(--text);
+}
+.item-name { font-style: italic; font-size: 1.35rem; line-height: 1.1; }
+.item-desc { margin-top: 3px; color: var(--pink); font-size: 1.02rem; line-height: 1.1; }
+.item-price { flex: none; text-align: right; font-size: 1rem; line-height: 1.3; white-space: nowrap; }
+
+/* Carousel Products */
+.carousel {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 6px 24px 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 24px;
+  scrollbar-width: none;
+  cursor: grab;
+  /* fade tipis di sisi kiri-kanan */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 22px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 22px), transparent);
+}
+.carousel::-webkit-scrollbar { display: none; }
+.carousel.dragging { scroll-snap-type: none; cursor: grabbing; user-select: none; }
+
+.pcard {
+  flex: 0 0 min(72%, 250px);
+  scroll-snap-align: start;
+  display: block;
+  padding: 8px 8px 16px;
+  background: var(--bg);
+  border: 1.5px solid var(--pink);
+  border-radius: 24px;
+  text-decoration: none; color: var(--text);
+}
+.pcard img { display: block; width: 100%; height: auto; aspect-ratio: auto 1 / 1; border-radius: 18px; }
+.pname { margin: 12px 8px 0; font-style: italic; font-size: 1.25rem; line-height: 1.1; }
+.pdesc { margin: 4px 8px 0; color: var(--pink); font-size: 1rem; line-height: 1.2; }
+.pprice { margin: 8px 8px 0; font-size: 1rem; }
+
+/* ===== POPOVER TIKTOK ===== */
+.popover {
+  position: fixed; z-index: 30;
+  display: flex; flex-direction: column; gap: 8px;
+  min-width: 168px; padding: 8px;
+  background: var(--bg-2);
+  border: 1.5px solid var(--pink);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  opacity: 0; transform: scale(0.8);
+  transform-origin: var(--ox, 50%) 100%;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.popover.open { opacity: 1; transform: scale(1); pointer-events: auto; }
+
+.pop-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px;
+  background: var(--bg);
+  border: 1.5px solid var(--pink);
+  border-radius: 16px;
+  color: var(--pink); font-style: italic; font-size: 1.1rem;
+  text-decoration: none;
+}
+.pop-btn svg { flex: none; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ===== HP KECIL ===== */
+@media (max-width: 380px) {
+  body { padding: 10px; }
+  .card { min-height: calc(100dvh - 20px); }
+  .intro h1 { font-size: 1.8rem; }
+  .tagline { letter-spacing: 0.14em; }
+  .label { letter-spacing: 0.2em; }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
