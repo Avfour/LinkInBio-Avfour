@@ -43,17 +43,36 @@ const APPS = ["Alight Motion", "CapCut", "Wink", "Others"];
 const PRODUCTS = [
   {
     name: "Sweet Macaroon",
-    desc: { id: "Deskripsi singkat produk", en: "Short product description" },  // GANTI: deskripsi produk
-    price: "Rp 19.000",                                                               // GANTI: harga produk
-    image: "assets/products/sweet-macaroon.webp",                               // GANTI: kalau nama file beda
+    desc: {
+      id: "Template Alight Motion dengan 3 warna pastel. Tinggal ganti teks dan warna, siap pakai.",
+      en: "Alight Motion template with 3 pastel colors. Just swap the text and colors, ready to use."
+    },
+    price: "Rp 12.000",
+    originalPrice: "Rp 19.000",
+    image: "assets/products/sweet-macaroon.webp",
     link: "http://lynk.id/aiiistheticsv4/1ogp5z13pz81/checkout"
   },
   {
     name: "Liquid Refraction",
-    desc: { id: "Deskripsi singkat produk", en: "Short product description" },  // GANTI: deskripsi produk
-    price: "Rp 45.000",                                                               // GANTI: harga produk
-    image: "assets/products/liquid-refraction.webp",                            // GANTI: kalau nama file beda
+    desc: {
+      id: "Efek teks liquid glass dengan refraksi dan aberasi kromatik. Teks terlihat seperti berada di dalam tetesan kaca cair, dengan tepi berwarna pelangi yang halus.",
+      en: "Liquid glass text effect with refraction and chromatic aberration. The text looks like it's inside a drop of liquid glass, with soft rainbow-colored edges."
+    },
+    price: "Rp 27.000",
+    originalPrice: "Rp 45.000",
+    image: "assets/products/liquid-refraction.webp",
     link: "http://lynk.id/aiiistheticsv4/oproeemmqjr8/checkout"
+  },
+  {
+    name: "Void Swallow",
+    desc: {
+      id: "Tangan kosmik yang melahap lubang hitam, seni digital orisinal sepenuhnya, tanpa green screen atau footage stock.",
+      en: "Cosmic hands devouring a black hole, fully original digital art, no green screen or stock footage."
+    },
+    price: "Rp 31.000",
+    originalPrice: "Rp 50.000",
+    image: "assets/products/void-swallow.webp",
+    link: "http://lynk.id/aiiistheticsv4/1ogp5z13pz81/checkout"
   }
 ];
 
@@ -200,7 +219,7 @@ function renderPopup() {
         <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" draggable="false">
         <p class="pname">${esc(p.name)}</p>
         <p class="pdesc">${esc(p.desc[lang])}</p>
-        <p class="pprice">${esc(p.price)}</p>
+        <p class="pprice"><span>${esc(p.price)}</span><del>${esc(p.originalPrice)}</del></p>
       </a>`).join("") + "</div>";
   }
 

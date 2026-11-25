@@ -266,7 +266,8 @@ a { color: inherit; }
 .pcard img { display: block; width: 100%; height: auto; aspect-ratio: auto 1 / 1; border-radius: 18px; }
 .pname { margin: 12px 8px 0; font-style: italic; font-size: 1.25rem; line-height: 1.1; }
 .pdesc { margin: 4px 8px 0; color: var(--pink); font-size: 1rem; line-height: 1.2; }
-.pprice { margin: 8px 8px 0; font-size: 1rem; }
+.pprice { display: flex; align-items: baseline; gap: 8px; margin: 8px 8px 0; font-size: 1rem; }
+.pprice del { color: var(--muted); font-size: 0.85rem; }
 
 /* ===== POPOVER TIKTOK ===== */
 .popover {
